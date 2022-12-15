@@ -6,7 +6,7 @@ const carSchema = mongoose.Schema({
     model: String,
     make: String,
     manufactureYear: Number,
-    insuranceDate: Date,
+    insuranceDate: Date,          
     value: Number,
     isNew: Boolean
     // carSchema: [{
