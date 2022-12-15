@@ -42,13 +42,13 @@ app.use(function(req, res, next){
 // const indexRoute = require('./routes/index'); //Frontend
 // const userRoute = require('./routes/user');
 // const carRoute = require('./routes/car');
-// const quoteRoute = require('./routes/quote');
+const quoteRoute = require('./routes/quote');
 
 // Mount Routes
 // app.use('/', indexRoute);
 // app.use('/', userRoute);
 // app.use('/', carRoute);
-// app.use('/', quoteRoute);
+app.use('/', quoteRoute);
 
 // Node.js to look in a folder views for all the ejs files.
 // app.set("view engine", "ejs");
