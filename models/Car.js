@@ -9,15 +9,15 @@ const carSchema = mongoose.Schema({
     insuranceDate: Date,          
     value: Number,
     isNew: Boolean
-    // carSchema: [{
+    // quoteSchema: [{
     //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Car'
+    //     ref: 'Quote'
     // }]
 },
 { timestamps: true}) // createdAt and updatedAt
 
 // Author Model
-const Car = mongoose.model("Car", carSchema);
+const Car = mongoose.model("Car", carSchema , "Car");
 
 // Export model to share it with controller
 module.exports = Car;

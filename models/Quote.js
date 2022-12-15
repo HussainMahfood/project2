@@ -7,7 +7,7 @@ const quoteSchema = mongoose.Schema ({
     quoteId: String,
     quoteValue: Number,
     quoteDate: Date,
-    insuranceType: String,
+    insuranceType: String
 
     // car: [{
     //     type: mongoose.Schema.Types.ObjectId ,
@@ -19,7 +19,7 @@ const quoteSchema = mongoose.Schema ({
 
 
 // Quote Model
-const Quote = mongoose.model ('Quote' , quoteSchema);
+const Quote = mongoose.model ('Quote' , quoteSchema , 'Quote');
 
 
 // Export model to share it with controller
