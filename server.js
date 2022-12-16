@@ -43,6 +43,7 @@ app.use(function(req, res, next){
 // const userRoute = require('./routes/user');
 const carRoute = require('./routes/car');
 const quoteRoute = require('./routes/quote');
+const Quote = require('./models/Quote');
 
 // Mount Routes
 // app.use('/', indexRoute);

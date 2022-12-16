@@ -64,3 +64,8 @@ exports.quote_delete_get = (req, res) => {
         console.log(err);
     })
 };
+
+//test reference
+Quote.find()
+.populate("carRef")
+.then(quote => (console.log(quote)))

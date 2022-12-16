@@ -7,7 +7,7 @@ const quoteSchema = mongoose.Schema ({
     quoteValue: Number,
     quoteDate: Date,
     insuranceType: String,
-    CarRef: {
+    carRef: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Car'
     },
