@@ -32,8 +32,9 @@ const userSchema = mongoose.Schema ({
         maxlength: [8 , "Phone Number must be 8 characters"]
     },
     photo: {
-        type: Image,
-        required: true,
+        // type: Image,
+        type: String,
+        required: true
     },
     password: {
         type: String,
