@@ -1,3 +1,4 @@
+// require mongoose
 const mongoose = require('mongoose');
 
 // Car Schema
@@ -8,16 +9,16 @@ const carSchema = mongoose.Schema({
     manufactureYear: Number,
     insuranceDate: Date,          
     value: Number,
-    isNew: Boolean
-    // carSchema: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Car'
-    // }]
+    isNewCar: Boolean,
+    userRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 },
 { timestamps: true}) // createdAt and updatedAt
 
-// Author Model
-const Car = mongoose.model("Car", carSchema);
+// Car Model
+const Car = mongoose.model("Car", carSchema, "Car");
 
 // Export model to share it with controller
 module.exports = Car;

@@ -9,17 +9,13 @@ router.use(express.urlencoded({ extended: true }));
 // Require isLoggedIn
 const isLoggedIn = require ('../helper/isLoggedIn');
 
-
-
-//// Controllers
+// Controllers
 const quoteCtrl = require("../controllers/quote");
 
 
-
-//// Routes
-
-// add
+// Routes
 // router.post("/quote/add", isLoggedIn, quoteCtrl.quote_add_post);
+// add
 router.post("/quote/add", quoteCtrl.quote_add_post);
 
 // list

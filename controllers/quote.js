@@ -1,8 +1,7 @@
 // Require Model
 const Quote = require("../models/Quote");
-// const {Car} = require("../models/Car");
-
-
+const Car = require("../models/Car");
+// const User = require("../models/User");
 
 // add
 exports.quote_add_post = (req, res) => {
@@ -58,7 +57,7 @@ exports.quote_update_post = (req, res) => {
 // delete
 exports.quote_delete_get = (req, res) => {  
     Quote.findByIdAndDelete(req.params.id)
-    .then(quote => {
+    .then(() => {
         res.send("record deleted");
     })
     .catch(err => {

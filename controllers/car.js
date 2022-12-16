@@ -1,43 +1,28 @@
 const Car = require("../models/Car");
+//const User = require("../models/User");
 
-exports.car_add_post= (req, res) =>{
-    res.send("car add is working");
+// add
+exports.car_add_post = (req, res) => {
+    let car = new Car (req.body)
+    car.save()
+    .then(()=>{
+        res.send("new data added");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 }
 
-exports.car_delete_get= (req, res) =>{
-    res.send("car delete is working");
-}
-
-exports.car_list_get= (req, res) =>{
-    //res.send("car list is working");
+// list
+exports.car_list_get = (req, res) => {
     Car.find()
     .then(car => {
-        res.json(car)
+    res.json(car);
     })
     .catch(err => {
         console.log(err);
     })
-
 }
-
-exports.car_view_get= (req, res) =>{
-    res.send("car view is working");
-}
-
-exports.car_edit_post= (req, res) =>{
-    res.send("car edit is working");
-}
-
-// delete
-exports.car_delete_get = (req, res) => {
-    Car.findByIdAndDelete(req.params.id)
-    .then(car => {
-        res.send("record deleted");
-    })
-    .catch(err => {
-        console.log(err);
-    })
-};
 
 // view
 exports.car_view_get = (req, res) => {
@@ -50,25 +35,24 @@ exports.car_view_get = (req, res) => {
     })
 }
 
-// add
-exports.car_add_post = (req, res) => {
-    let car = new Car (req.body)
-    quote.save()
-    .then(()=>{
-        res.send("new data added");
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-}
-
 // update
 exports.car_update_post = (req, res) => {
     Car.findByIdAndUpdate(req.params.id , req.body)
     .then(() => {
-        res.send ("data updated")
+        res.send ('data updated')
     })
     .catch(err => {
         console.log(err)
     });
 }
+
+// delete
+exports.car_delete_get = (req, res) => {  
+    Car.findByIdAndDelete(req.params.id)
+    .then(() => {
+        res.send("record deleted");
+    })
+    .catch(err => {
+        console.log(err);
+    })
+};
