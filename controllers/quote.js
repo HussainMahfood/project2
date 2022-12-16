@@ -66,6 +66,6 @@ exports.quote_delete_get = (req, res) => {
 };
 
 //test reference
-Quote.find()
-.populate("carRef")
-.then(quote => (console.log(quote)))
+// Quote.find()
+// .populate("carRef")
+// .then(quote => (console.log(quote)))

@@ -55,11 +55,11 @@ app.use('/', quoteRoute);
 // app.set("view engine", "ejs");
 
 mongoose.set('strictQuery', false);
-// MongoDB Connection
+// MongoDB Connection Configuration
 mongoose.connect(process.env.mongoDBURL, 
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => {
-        console.log("MongoDB Connected Successfully")
+        console.log("MongoDB Configured Successfully")
     }
 )
 
