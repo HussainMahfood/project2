@@ -5,10 +5,10 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 
 // Require isLoggedIn
-const isLoggedIn = require("../helper/isLoggedIn2");
+const isLoggedIn = require("../helper/isLoggedIn");
 
 // Controller
-const carCntrl = require("../controllers/car2");
+const carCntrl = require("../controllers/car");
 
 // Routes
 

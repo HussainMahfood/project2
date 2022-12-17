@@ -19,14 +19,14 @@ app.use(express.static("public"));
 
 // Express Session and Passport
 let session = require('express-session');
-let passport = require('./helper/ppConfig2');
+let passport = require('./helper/ppConfig');
 
 // Session
 app.use(session({
     secret: process.env.SECRET,
     saveUninitialized: true,
     resave: false,
-    cookie: {maxAge: 3600000}
+    cookie: {maxAge: 360000} // 1 hour
 }));
 
 app.use(passport.initialize());
@@ -40,9 +40,9 @@ app.use(function(req, res, next){
 
 // Import Routes
 // const indexRoute = require('./routes/index'); //Frontend
-const userRoute = require('./routes/user2');
-const carRoute = require('./routes/car2');
-const quoteRoute = require('./routes/quote2');
+const userRoute = require('./routes/user');
+const carRoute = require('./routes/car');
+const quoteRoute = require('./routes/quote');
 
 // Mount Routes
 // app.use('/', indexRoute);
@@ -54,7 +54,7 @@ app.use('/', quoteRoute);
 // app.set("view engine", "ejs");
 
 mongoose.set('strictQuery', false);
-// MongoDB Connection
+// MongoDB Connection Configuration
 mongoose.connect(process.env.mongoDBURL, 
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => {

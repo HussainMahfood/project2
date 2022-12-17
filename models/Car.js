@@ -1,3 +1,4 @@
+// Require Mongoose
 const mongoose = require('mongoose');
 
 // Car Schema
@@ -8,11 +9,11 @@ const carSchema = mongoose.Schema({
     manufactureYear: Number,
     insuranceDate: Date,          
     value: Number,
-    isNewCar: Boolean
-    // user: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: '_id'
-    // }]
+    isNewCar: Boolean,
+    userRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 },
 { timestamps: true}) // createdAt and updatedAt
 

@@ -1,5 +1,5 @@
 // Require User Model
-const User = require ('../models/User2');
+const User = require ('../models/User');
 
 
 // Require bcrypt
@@ -8,7 +8,7 @@ const salt = 10;
 
 
 // Require Passport Configurations
-let passport = require ('../helper/ppConfig2')
+let passport = require ('../helper/ppConfig')
 
 
 

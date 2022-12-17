@@ -1,7 +1,7 @@
 // Require Model
-const Quote = require("../models/Quote2");
-// const Car = require("../models/Car");
-
+const Quote = require("../models/Quote");
+const Car = require("../models/Car");
+const User = require("../models/User");
 
 
 // add
@@ -65,3 +65,8 @@ exports.quote_delete_get = (req, res) => {
         console.log(err);
     })
 };
+
+//test reference
+// Quote.find()
+// .populate("carRef")
+// .then(quote => (console.log(quote)))

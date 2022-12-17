@@ -1,5 +1,5 @@
-const Car = require("../models/Car2");
-// const Quote = require("../models/Quote");
+const Car = require("../models/Car");
+const User = require("../models/User");
 
 
 // add
@@ -15,21 +15,8 @@ exports.car_add_post = (req, res) => {
 }
 
 
-// delete
-exports.car_delete_get = (req, res) => {
-    Car.findByIdAndDelete(req.params.id)
-    .then(car => {
-        res.send("car record deleted");
-    })
-    .catch(err => {
-        console.log(err);
-    })
-};
-
-
 // list
 exports.car_list_get= (req, res) =>{
-    //res.send("car list is working");
     Car.find()
     .then(car => {
         res.json(car)
@@ -63,3 +50,15 @@ exports.car_update_post = (req, res) => {
         console.log(err)
     });
 }
+
+
+// delete
+exports.car_delete_get = (req, res) => {
+    Car.findByIdAndDelete(req.params.id)
+    .then(car => {
+        res.send("car record deleted");
+    })
+    .catch(err => {
+        console.log(err);
+    })
+};

@@ -7,15 +7,17 @@ const quoteSchema = mongoose.Schema ({
     quoteId: String,
     quoteValue: Number,
     quoteDate: Date,
-    insuranceType: String
-
-    // car: [{
-    //     type: mongoose.Schema.Types.ObjectId ,
-    //     ref: 'plateId'
-    // }]
+    insuranceType: String,
+    carRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Car'
+    },
+    userRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, 
 { timestamps: true })  // createdAt and updatedAt
-
 
 
 // Quote Model

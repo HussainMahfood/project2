@@ -7,13 +7,11 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 
 // Require isLoggedIn
-const isLoggedIn = require ('../helper/isLoggedIn2');
-
+const isLoggedIn = require ('../helper/isLoggedIn');
 
 
 //// Controllers
-const quoteCtrl = require("../controllers/quote2");
-
+const quoteCtrl = require("../controllers/quote");
 
 
 //// Routes
@@ -33,7 +31,6 @@ router.post("/quote/update/:id", quoteCtrl.quote_update_post);
 
 // delete
 router.get("/quote/delete/:id", quoteCtrl.quote_delete_get);
-
 
 
 // Exports
