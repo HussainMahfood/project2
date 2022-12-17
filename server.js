@@ -40,9 +40,9 @@ app.use(function(req, res, next){
 
 // Import Routes
 // const indexRoute = require('./routes/index'); //Frontend
-const userRoute = require('./routes/user');
-const carRoute = require('./routes/car');
-const quoteRoute = require('./routes/quote');
+const userRoute = require('./routes/user2');
+const carRoute = require('./routes/car2');
+const quoteRoute = require('./routes/quote2');
 
 // Mount Routes
 // app.use('/', indexRoute);

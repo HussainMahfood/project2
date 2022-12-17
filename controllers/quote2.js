@@ -1,5 +1,5 @@
 // Require Model
-const Quote = require("../models/Quote");
+const Quote = require("../models/Quote2");
 // const Car = require("../models/Car");
 
 

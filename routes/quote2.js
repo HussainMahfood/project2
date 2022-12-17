@@ -12,7 +12,7 @@ const isLoggedIn = require ('../helper/isLoggedIn');
 
 
 //// Controllers
-const quoteCtrl = require("../controllers/quote");
+const quoteCtrl = require("../controllers/quote2");
 
 
 

@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 // Controllers
-const userCtrl = require ('../controllers/user');
+const userCtrl = require ('../controllers/user2');
 
 // Routes
 router.post ('/user/signup' , userCtrl.user_signup_post);

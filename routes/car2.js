@@ -8,7 +8,7 @@ router.use(express.urlencoded({ extended: true }));
 const isLoggedIn = require("../helper/isLoggedIn");
 
 // Controller
-const carCntrl = require("../controllers/car");
+const carCntrl = require("../controllers/car2");
 
 // Routes
 
