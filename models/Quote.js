@@ -1,7 +1,6 @@
 // Require Mongoose
 const mongoose = require ('mongoose');
 
-
 // Quote Schema
 const quoteSchema = mongoose.Schema ({
     quoteId: String,
@@ -19,9 +18,8 @@ const quoteSchema = mongoose.Schema ({
 }, 
 { timestamps: true })  // createdAt and updatedAt
 
-
 // Quote Model
-const Quote = mongoose.model ('Quote' , quoteSchema , 'Quote');
+const Quote = mongoose.model ('Quote' , quoteSchema, 'Quote');
 
 
 // Export model to share it with controller

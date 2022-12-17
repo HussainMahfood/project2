@@ -58,7 +58,7 @@ mongoose.set('strictQuery', false);
 mongoose.connect(process.env.mongoDBURL, 
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => {
-        console.log("MongoDB Connected Successfully")
+        console.log("MongoDB Configured Successfully")
     }
 )
 
