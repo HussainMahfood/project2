@@ -19,7 +19,7 @@ app.use(express.static("public"));
 
 // Express Session and Passport
 let session = require('express-session');
-let passport = require('./helper/ppConfig');
+let passport = require('./helper/ppConfig2');
 
 // Session
 app.use(session({

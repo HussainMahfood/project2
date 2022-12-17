@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 
 // Require isLoggedIn
-const isLoggedIn = require("../helper/isLoggedIn");
+const isLoggedIn = require("../helper/isLoggedIn2");
 
 // Controller
 const carCntrl = require("../controllers/car2");

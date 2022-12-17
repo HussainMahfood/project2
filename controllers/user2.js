@@ -8,7 +8,7 @@ const salt = 10;
 
 
 // Require Passport Configurations
-let passport = require ('../helper/ppConfig')
+let passport = require ('../helper/ppConfig2')
 
 
 
