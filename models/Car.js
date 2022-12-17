@@ -1,4 +1,4 @@
-// require mongoose
+// Require Mongoose
 const mongoose = require('mongoose');
 
 // Car Schema

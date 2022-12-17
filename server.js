@@ -40,13 +40,13 @@ app.use(function(req, res, next){
 
 // Import Routes
 // const indexRoute = require('./routes/index'); //Frontend
-// const userRoute = require('./routes/user');
+const userRoute = require('./routes/user');
 const carRoute = require('./routes/car');
 const quoteRoute = require('./routes/quote');
 
 // Mount Routes
 // app.use('/', indexRoute);
-// app.use('/', userRoute);
+app.use('/', userRoute);
 app.use('/', carRoute);
 app.use('/', quoteRoute);
 

@@ -21,5 +21,6 @@ const quoteSchema = mongoose.Schema ({
 // Quote Model
 const Quote = mongoose.model ('Quote' , quoteSchema, 'Quote');
 
+
 // Export model to share it with controller
 module.exports = Quote;

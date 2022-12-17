@@ -1,14 +1,15 @@
 // Require Model
 const Quote = require("../models/Quote");
 const Car = require("../models/Car");
-// const User = require("../models/User");
+const User = require("../models/User");
+
 
 // add
 exports.quote_add_post = (req, res) => {
     let quote = new Quote (req.body)
     quote.save()
     .then(()=>{
-        res.send("new data added");
+        res.send("new quote added");
     })
     .catch((err) => {
         console.log(err);
@@ -45,7 +46,7 @@ exports.quote_view_get = (req, res) => {
 exports.quote_update_post = (req, res) => {
     Quote.findByIdAndUpdate(req.params.id , req.body)
     .then(() => {
-        res.send ('data updated')
+        res.send ('quote record updated')
     })
     .catch(err => {
         console.log(err)
@@ -58,7 +59,7 @@ exports.quote_update_post = (req, res) => {
 exports.quote_delete_get = (req, res) => {  
     Quote.findByIdAndDelete(req.params.id)
     .then(() => {
-        res.send("record deleted");
+        res.send("quote record deleted");
     })
     .catch(err => {
         console.log(err);

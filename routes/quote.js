@@ -31,6 +31,5 @@ router.post("/quote/update/:id", quoteCtrl.quote_update_post);
 router.get("/quote/delete/:id", quoteCtrl.quote_delete_get);
 
 
-
 // Exports
 module.exports = router;
