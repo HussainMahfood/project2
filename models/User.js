@@ -1,7 +1,7 @@
 // Require Mongoose
 const mongoose = require ('mongoose');
 
-// Require bcrypt
+// Require bcrypt for hashing and salting
 const bcrypt = require ('bcrypt');
 
 
@@ -9,27 +9,31 @@ const bcrypt = require ('bcrypt');
 const userSchema = mongoose.Schema ({
     firstName: {
         type: String ,
+        trim: true,
         required: true,
-        minlength: [2 , "First name must be more than 2 characters"],
-        maxlength: [99 , "Too Much!!"]
+        minlength: [3 , "Please enter a name with 3 or more than 3 characters"],
+        maxlength: [15 , "Your entered name exceeds the maximum character limit!!!"]
     },
     lastName: {
         type: String ,
+        trim: true,
         required: true,
-        minlength: [2 , "Last name must be more than 2 characters"],
-        maxlength: [99 , "Too Much!!"]
+        minlength: [3 , "Please enter a name with 3 or more than 3 characters"],
+        maxlength: [15 , "Your entered name exceeds the maximum character limit!!!"]
     },
     emailAddress: {
         type: String ,
+        trim: true,
         required: true,
         lowercase: true,
         unique: true
     },
     phoneNumber: {
         type: String,
+        trim: true,
         required: true,
-        minlength: [8 , "Phone Number must be 8 characters"],
-        maxlength: [8 , "Phone Number must be 8 characters"]
+        minlength: [8 , "Please enter a phone number with atleast 8 digits"],
+        maxlength: [15 , "Please enter a phone number with atmost 15 digits"]
     },
     photo: {
         // type: Image,
@@ -39,7 +43,7 @@ const userSchema = mongoose.Schema ({
     password: {
         type: String,
         required: true,
-        minlength: [5 , "Password is too weak, more characters needed"]
+        minlength: [6 , "Password is too weak!!! Please enter a strong password with more than 6 characters"]
     }
 } , {
     timestamps: true   // createdAt and updatedAt
