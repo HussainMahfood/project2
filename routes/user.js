@@ -9,15 +9,26 @@ const router = express.Router();
 const userCtrl = require ('../controllers/user');
 
 // Routes
-router.post ('/user/signup' , userCtrl.user_signup_post);
+// User register routes
+router.get('/auth/register', userCtrl.user_signup_get);
+router.post('/auth/register', userCtrl.user_signup_post);
 
-router.post ('/user/signin' , userCtrl.user_signin_post);
+// User sign in routes
+router.get('/auth/signin', userCtrl.user_signin_get);
+router.post('/auth/signin', userCtrl.user_signin_post);
 
-router.get ('/user/view/:id' , userCtrl.user_view_get);
+// User logout route
+router.get('/auth/logout', userCtrl.user_logout_get);
 
-router.post ('/user/update/:id' , userCtrl.user_update_post);
+// View User Profile route
+router.get('/auth/viewProfile', userCtrl.user_viewProfile_get);
 
-router.get ('/user/logout' , userCtrl.user_logout_get);
+// User profile edit and update routes
+router.get('/auth/editProfile', userCtrl.user_editProfile_get);
+router.put('/auth/updateProfile', userCtrl.user_updateProfile_put)
+
+// User profile delete route
+router.get('/auth/deleteProfile', userCtrl.user_deleteProfile_get);
 
 
 

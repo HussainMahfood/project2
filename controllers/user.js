@@ -10,6 +10,10 @@ let passport = require ('../helper/ppConfig');
 // const { exists } = require('../models/User');
 
 
+// GET API for getting and displaying signup/register page
+exports.user_signup_get = (req, res) => {
+    res.render("auth/register");
+}
 
 // POST API for signing up/registering new user 
 exports.user_signup_post = (req, res) => {
@@ -48,7 +52,7 @@ exports.user_signup_post = (req, res) => {
         // Saving the new user
         newUserSave = newUser.save().then( () => {
             res.json(newUser, {msg: "New User registered Successfully"})
-            // res.redirect("/auth/signin");
+            res.redirect("/auth/signin");
         })
         .catch(err => {
             console.log(err);
@@ -59,7 +63,10 @@ exports.user_signup_post = (req, res) => {
     }
 }
 
-
+// GET API for displaying signin page
+exports.user_signin_get = (req, res) => {
+    res.render("/auth/signin");
+}
 // Sign in POST API after new user is created
 exports.user_signin_post = (req, res) => {
     try {
@@ -87,7 +94,7 @@ exports.user_signin_post = (req, res) => {
     }
     passport.authenticate('local', {
         successRedirect: "/",
-        failureRedirect: "/user/signin"
+        failureRedirect: "/auth/signin"
     });
 }
 
@@ -100,37 +107,76 @@ exports.user_logout_get = (req , res) => {
             return next (err);
         }
         res.send ('user logout successful');
-        // res.redirect ('/user/signin');
+        res.redirect ('/auth/signin');
     })
 }
 
+// GET API for viewing profile information page after clicking on view profile button
+exports.user_viewProfile_get = (req, res) => {
+    try {
+        console.log(req.query.id);
+        User.findById(req.query.id).then(user => {
+            res.json(user);
+            res.render("auth/viewProfile", {user, moment});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+    catch(error) {
+        res.json(error);
+    }
+} 
 
+// GET API for displaying the edit profile page
+exports.user_editProfile_get = (req, res) => {
+    try {
+        User.findById(req.query.id).then(user => {
+            res.render("auth/editProfile", {user});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+    catch(error) {
+        res.json(error);
+    }
+}
 
+// PUT API for updating the user profile after editing 
+exports.user_updateProfile_put = (req, res) => {
+    try {
+        console.log(req.body.id);
+        User.findByIdAndUpdate(req.body.id, req.body).then(() => {
+            res.send ('user updated');
+            res.redirect("/auth/viewProfile");
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
+    catch(error) {
+        res.json(error);
+    }
+}
 
-
-// view
-exports.user_view_get = (req, res) => {
-    User.findById(req.params.id)
-    .then(user => {
-        res.json(user);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+// DELETE API for deleting user's profile
+exports.user_deleteProfile_get = (req, res) => {
+    try {
+        console.log(req.query.id);
+        User.findByIdAndDelete(req.query.id).then(() => {
+            res.redirect("/auth/register");
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    catch(error) {
+        res.json(error)
+    }
 }
 
 
-
-// update
-exports.user_update_post = (req, res) => {
-    User.findByIdAndUpdate(req.params.id , req.body)
-    .then(() => {
-        res.send ('user updated')
-    })
-    .catch(err => {
-        console.log(err)
-    });
-}
 
 
 
