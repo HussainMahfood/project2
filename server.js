@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // Require and initialze dotenv
 require('dotenv').config();
 
+
 // Initailze Express
 const app = express();
 
@@ -18,25 +19,25 @@ app.use(express.static("public"));
 // app.use(expressLayouts);
 
 // Express Session and Passport
-let session = require('express-session');
-let passport = require('./helper/ppConfig');
+//let session = require('express-session');
+//let passport = require('./helper/ppConfig');
 
 // Session
-app.use(session({
-    secret: process.env.SECRET,
-    saveUninitialized: true,
-    resave: false,
-    cookie: {maxAge: 360000} // 1 hour
-}));
+// app.use(session({
+//     secret: process.env.SECRET,
+//     saveUninitialized: true,
+//     resave: false,
+//     cookie: {maxAge: 360000} // 1 hour
+// }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Sharing the information with all web pages.
-app.use(function(req, res, next){
-    res.locals.currentUser = req.user;
-    next();
-})
+// app.use(function(req, res, next){
+//     res.locals.currentUser = req.user;
+//     next();
+// })
 
 // Import Routes
 // const indexRoute = require('./routes/index'); //Frontend

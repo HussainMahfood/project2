@@ -1,46 +1,29 @@
 // Require User Model
 const User = require ('../models/User');
 
-
 // Require bcrypt
 const bcrypt = require ('bcrypt');
 const salt = 10;
 
-
 // Require Passport Configurations
 let passport = require ('../helper/ppConfig')
-
-
 
 // signup
 exports.user_signup_post = (req , res) => {
     let user = new User (req.body);
-
+    console.log(req.body);
     let hash = bcrypt.hashSync(req.body.password , salt);
-    console.log (hash);
-
     user.password = hash
-
     // Save user
     user.save()
     .then( () => {
-        res.send ('user signin successfully');
+        res.send ('user signup successfully');
         // res.redirect('/user/signin');
     })
     .catch(err => {
-        console.log (err);
+        console.log (err); // add 404 page error in all so in case of error user aware of it
     })
 }
-
-
-
-// signin
-exports.user_signin_post = passport.authenticate('local' , {
-    successRedirect: "/",
-    failureRedirect: "/user/signin"
-});
-
-
 
 // view
 exports.user_view_get = (req, res) => {
@@ -53,8 +36,6 @@ exports.user_view_get = (req, res) => {
     })
 }
 
-
-
 // update
 exports.user_update_post = (req, res) => {
     User.findByIdAndUpdate(req.params.id , req.body)
@@ -66,7 +47,11 @@ exports.user_update_post = (req, res) => {
     });
 }
 
-
+// signin
+exports.user_signin_post = passport.authenticate('local' , {
+    successRedirect: "/",
+    failureRedirect: "/user/signin"
+});
 
 // logout
 exports.user_logout_get = (req , res) => {

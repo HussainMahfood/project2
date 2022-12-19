@@ -3,7 +3,6 @@ const Quote = require("../models/Quote");
 const Car = require("../models/Car");
 const User = require("../models/User");
 
-
 // add
 exports.quote_add_post = (req, res) => {
     let quote = new Quote (req.body)
@@ -52,7 +51,6 @@ exports.quote_update_post = (req, res) => {
         console.log(err)
     });
 }
-
 
 
 // delete
