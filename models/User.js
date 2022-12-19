@@ -42,16 +42,14 @@ const userSchema = mongoose.Schema ({
 })
 
 // verifyPassword
-// userSchema.methods.verifyPassword = function (password) {
-//     console.log (password);
-//     console.log (this.password);
-//     return bcrypt.compareSync(password , this.password);
-// }
-
+userSchema.methods.verifyPassword = function (password) {
+    console.log (password);
+    console.log (this.password);
+    return bcrypt.compareSync(password , this.password);
+}
 
 // User Model
 const User = mongoose.model ('User' , userSchema, 'User');
-
 
 // Export model to share it with controller
 module.exports = User;

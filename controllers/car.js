@@ -15,7 +15,7 @@ exports.car_add_post = (req, res) => {
 
 // list
 exports.car_list_get= (req, res) =>{
-    Car.find()
+    Car.find().populate("userRef")
     .then(car => {
         res.json(car)
     })
@@ -29,7 +29,7 @@ exports.car_list_get= (req, res) =>{
 exports.car_view_get = (req, res) => {
     Car.findById(req.params.id)
     .then(car => {
-        res.json(car);
+        res.send(car);
     })
     .catch(err => {
         console.log(err);

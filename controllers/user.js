@@ -29,7 +29,7 @@ exports.user_signup_post = (req , res) => {
 exports.user_view_get = (req, res) => {
     User.findById(req.params.id)
     .then(user => {
-        res.json(user);
+        res.send(user);
     })
     .catch(err => {
         console.log(err);
@@ -40,7 +40,7 @@ exports.user_view_get = (req, res) => {
 exports.user_update_post = (req, res) => {
     User.findByIdAndUpdate(req.params.id , req.body)
     .then(() => {
-        res.send ('user updated')
+        res.send('user updated')
     })
     .catch(err => {
         console.log(err)
@@ -50,7 +50,8 @@ exports.user_update_post = (req, res) => {
 // signin
 exports.user_signin_post = passport.authenticate('local' , {
     successRedirect: "/",
-    failureRedirect: "/user/signin"
+    failureRedirect: "/user/signin",
+   // failureFlash: true // add flash message
 });
 
 // logout

@@ -1,7 +1,7 @@
 // Require Model
 const Quote = require("../models/Quote");
-//const Car = require("../models/Car");
-//const User = require("../models/User");
+const Car = require("../models/Car");
+const User = require("../models/User");
 
 // add
 exports.quote_add_post = (req, res) => {
@@ -18,28 +18,22 @@ exports.quote_add_post = (req, res) => {
 // list
 exports.quote_list_get = (req, res) => {
     Quote.find()
-    .then(quote => {
-    res.json(quote);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    .populate("carRef")
+    .populate("userRef")
+    .then(quote => (res.send(quote)))
+    .catch(err => {console.log(err)})
 }
-
-
 
 // view
 exports.quote_view_get = (req, res) => {
     Quote.findById(req.params.id)
     .then(quote => {
-        res.json(quote);
+        res.send(quote);
     })
     .catch(err => {
         console.log(err);
     })
 }
-
-
 
 // update
 exports.quote_update_post = (req, res) => {
@@ -63,8 +57,3 @@ exports.quote_delete_get = (req, res) => {
         console.log(err);
     })
 };
-
-//test reference
-// Quote.find()
-// .populate("carRef")
-// .then(quote => (console.log(quote)))
