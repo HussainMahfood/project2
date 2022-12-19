@@ -1,7 +1,7 @@
 // Require Model
 const Quote = require("../models/Quote");
-const Car = require("../models/Car");
-const User = require("../models/User");
+//const Car = require("../models/Car");
+//const User = require("../models/User");
 
 // add
 exports.quote_add_post = (req, res) => {
