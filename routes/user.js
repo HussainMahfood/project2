@@ -4,6 +4,8 @@ const express = require('express');
 // Initialize Router functionality
 const router = express.Router();
 
+// Require for post requests
+router.use(express.urlencoded({ extended: true }));
 
 // Controllers
 const userCtrl = require ('../controllers/user');
@@ -23,13 +25,13 @@ router.get('/auth/logout', userCtrl.user_logout_get);
 // View User Profile route
 router.get('/auth/viewProfile', userCtrl.user_viewProfile_get);
 
+
 // User profile edit and update routes
 router.get('/auth/editProfile', userCtrl.user_editProfile_get);
 router.put('/auth/updateProfile', userCtrl.user_updateProfile_put)
 
 // User profile delete route
 router.get('/auth/deleteProfile', userCtrl.user_deleteProfile_get);
-
 
 
 // Exports
