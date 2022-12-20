@@ -1,0 +1,39 @@
+<h1> Edit Quote </h1>
+
+<form method="POST" action="/quote/update?_method=PUT">
+    
+    <div class="form-group">
+        <label>Quote ID</label>
+        <input type="text" name="quoteId" value="<%= quote.quoteId %>"  class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Quote Value</label>
+        <input type="number" name="quoteValue" value="<%= quote.quoteValue %>"  class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Quote Date</label>
+        <input type="date" name="quoteDate" value="<%= quote.quoteDate %>"  class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Insurance Type</label>
+        <input type="text" name="insuranceType" value="<%= quote.insuranceType %>"  class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Car</label>
+        <input type="text" name="car" value="<%= quote.car %>"  class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>User</label>
+        <input type="text" name="user" value="<%= quote.user %>"  class="form-control">
+    </div>
+
+    <input type="hidden" name="id" value="<%= quote._id %>"  class="form-control">
+    <br>
+    <button type="submit" class="btn btn-primary">Update Quote</button>
+
+</form>
