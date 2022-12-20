@@ -13,20 +13,13 @@
 </div>
 
 <div>
-    Car: <%= quote.car.name %>
-</div>
-
-<div>
-    User: <%= quote.user.name %>
-</div>
-
-<div>
     Created At: <%= moment(quote.createdAt).fromNow() %>
 </div>
 
 <div>
     Updated At: <%= moment(quote.updatedAt).fromNow() %>
 </div>
+
 
 <% quote.car.forEach(function(car){ %>
     <hr>

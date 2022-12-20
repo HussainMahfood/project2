@@ -8,7 +8,7 @@ const User = require("../models/User");
 // add - GET
 exports.quote_add_get = (req, res) =>{
     Car.find()
-    // User.find()
+    User.find()
     .then ( (cars , users) => {
         res.render ('quote/add' , {cars , users} )
     })
@@ -31,12 +31,12 @@ exports.quote_add_post = (req, res) => {
             });
         })
         // user
-        // req.body.user.forEach ( user => {
-        //     User.findById (user , (err , user) => {
-        //         user.quote.push (quote);
-        //         user.save();
-        //     });
-        // })        
+        req.body.user.forEach ( user => {
+            User.findById (user , (err , user) => {
+                user.quote.push (quote);
+                user.save();
+            });
+        })        
         res.redirect ('/quote/list');
         })
     .catch((err) => {
@@ -50,7 +50,7 @@ exports.quote_list_get = (req, res) => {
     Quote.find()
     .populate("carRef")
     .populate("userRef")
-    .then(recipes => {
+    .then(quotes => {
         res.render("quote/list", {quotes, moment})
     })
     .catch(err => {
