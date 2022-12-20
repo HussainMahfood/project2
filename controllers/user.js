@@ -5,6 +5,9 @@ const User = require ('../models/User');
 const bcrypt = require ('bcrypt');
 // const salt = 10;
 
+// Require Moment
+const moment = require('moment');
+
 // Require Passport Configurations
 let passport = require ('../helper/ppConfig');
 // const { exists } = require('../models/User');
@@ -33,11 +36,11 @@ exports.user_signup_post = (req, res) => {
             return res.json({ msg: "Please enter a password with atleast 6 characters"});
         }
 
-        // // Checking if the email already exits or not in the MongoDB database
-        // const emailExists = User.findOne({emailAddress: emailAddress});
-        // if(emailExists) {
-        //     res.json({ msg: "Email already taken. Please try a new email"});
-        // }
+        // Checking if the email already exits or not in the MongoDB database
+        const emailExists = User.findOne({emailAddress: emailAddress});
+        if(emailExists) {
+            res.json({ msg: "Email already taken. Please try a new email"});
+        }
 
 
         // Creating a new user from the User Model
@@ -106,7 +109,7 @@ exports.user_signin_post = passport.authenticate('local', {
 
 // logout
 exports.user_logout_get = (req , res) => {
-console.log("test")
+// console.log("test")
     // Invalidate session
     req.logout ( function (err) {
         if (err) {
@@ -120,10 +123,11 @@ console.log("test")
 
 // GET API for viewing profile information page after clicking on view profile button
 exports.user_viewProfile_get = (req, res) => {
+    // console.log(req.user);
     try {
-        console.log(req.query.id);
-        User.findById(req.query.id).then(user => {
-            res.json(user);
+        // console.log(req.user);
+        User.findById(req.user).then(user => {
+            //res.json(user);
             res.render("user/viewProfile", {user, moment});
         })
         .catch(err => {
@@ -138,8 +142,8 @@ exports.user_viewProfile_get = (req, res) => {
 // GET API for displaying the edit profile page
 exports.user_editProfile_get = (req, res) => {
     try {
-        User.findById(req.query.id).then(user => {
-            res.render("user/editProfile", {user});
+        User.findById(req.user).then(user => {
+            res.render("user/editProfile", {user, moment});
         })
         .catch(err => {
             console.log(err);
@@ -150,13 +154,15 @@ exports.user_editProfile_get = (req, res) => {
     }
 }
 
-// PUT API for updating the user profile after editing 
+// POST API for updating the user profile after editing 
 exports.user_updateProfile_post = (req, res) => {
     try {
-        console.log(req.body.id);
-        User.findByIdAndUpdate(req.body.id, req.body).then(() => {
-            res.send ('user updated');
-            res.redirect("/user/viewProfile");
+        console.log(req.user);
+        console.log("test");
+        console.log(req.body);
+        User.findByIdAndUpdate(req.user, req.body).then(() => {
+            // res.send ('user updated');
+            res.redirect("/");
         })
         .catch(err => {
             console.log(err)
