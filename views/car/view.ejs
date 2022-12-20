@@ -1,0 +1,46 @@
+<h2> <%= car.plateId %> </h2>
+
+<div>
+    Model: <%= car.model %>
+</div>
+
+<div>
+    Make: <%= quote.make %>
+</div>
+
+<div>
+    Manufacture Year: <%= quote.manufactureYear %>
+</div>
+
+<div>
+    Insuarnce Date: <%= quote.insuranceDate %>
+</div>
+
+<div>
+    Value: <%= quote.value %>
+</div>
+
+<div>
+    Is New Car?: <%= quote.isNewCar %>
+</div>
+
+<div>
+    Created At: <%= moment(quote.createdAt).fromNow() %>
+</div>
+
+<div>
+    Updated At: <%= moment(quote.updatedAt).fromNow() %>
+</div>
+
+
+<% quote.user.forEach(function(user){ %>
+    <hr>
+  
+    <div class="user"> 
+        <div>First Name: <%= user.firstName %></div>
+        <div>Last Name: <%= user.lastName %></div>
+        <div>Email Address: <%= user.emailAddress %></div>
+        <div>Phone Number: <%= user.phoneNumber %></div>
+        <div>User Created on: <%= moment(user.createdAt).fromNow() %></div>
+    </div>
+<% }) %>

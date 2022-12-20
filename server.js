@@ -13,10 +13,10 @@ const app = express();
 app.use(express.static("public"));
 
 // Require Express-EJS-Layouts
-// const expressLayouts = require("express-ejs-layouts");
+const expressLayouts = require("express-ejs-layouts");
 
 // Look in to views folder for a file named layout.ejs
-// app.use(expressLayouts);
+app.use(expressLayouts);
 
 // Express Session and Passport
 //let session = require('express-session');
@@ -52,7 +52,7 @@ app.use('/', carRoute);
 app.use('/', quoteRoute);
 
 // Node.js to look in a folder views for all the ejs files.
-// app.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 mongoose.set('strictQuery', false);
 // MongoDB Connection Configuration
