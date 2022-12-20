@@ -5,35 +5,35 @@
 </div>
 
 <div>
-    Make: <%= quote.make %>
+    Make: <%= car.make %>
 </div>
 
 <div>
-    Manufacture Year: <%= quote.manufactureYear %>
+    Manufacture Year: <%= car.manufactureYear %>
 </div>
 
 <div>
-    Insuarnce Date: <%= quote.insuranceDate %>
+    Insuarnce Date: <%= car.insuranceDate %>
 </div>
 
 <div>
-    Value: <%= quote.value %>
+    Value: <%= car.value %>
 </div>
 
 <div>
-    Is New Car?: <%= quote.isNewCar %>
+    Is New Car?: <%= car.isNewCar %>
 </div>
 
 <div>
-    Created At: <%= moment(quote.createdAt).fromNow() %>
+    Created At: <%= moment(car.createdAt).fromNow() %>
 </div>
 
 <div>
-    Updated At: <%= moment(quote.updatedAt).fromNow() %>
+    Updated At: <%= moment(car.updatedAt).fromNow() %>
 </div>
 
 
-<% quote.user.forEach(function(user){ %>
+<% car.user.forEach(function(user){ %>
     <hr>
   
     <div class="user"> 
