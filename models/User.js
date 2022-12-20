@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema ({
         required: true,
         minlength: [3 , "Please enter a name with 3 or more than 3 characters"],
         maxlength: [15 , "Your entered name exceeds the maximum character limit!!!"]
+
     },
     lastName: {
         type: String ,
@@ -26,7 +27,7 @@ const userSchema = mongoose.Schema ({
         trim: true,
         required: true,
         lowercase: true,
-        unique: true
+     // unique: true
     },
     phoneNumber: {
         type: String,
@@ -38,7 +39,7 @@ const userSchema = mongoose.Schema ({
     photo: {
         // type: Image,
         type: String,
-        required: true
+        // required: true
     },
     password: {
         type: String,
@@ -49,8 +50,6 @@ const userSchema = mongoose.Schema ({
     timestamps: true   // createdAt and updatedAt
 })
 
-
-
 // verifyPassword
 userSchema.methods.verifyPassword = function (password) {
     console.log (password);
@@ -58,11 +57,8 @@ userSchema.methods.verifyPassword = function (password) {
     return bcrypt.compareSync(password , this.password);
 }
 
-
-
 // User Model
-const User = mongoose.model ('User' , userSchema , 'User');
-
+const User = mongoose.model ('User' , userSchema, 'User');
 
 // Export model to share it with controller
 module.exports = User;
