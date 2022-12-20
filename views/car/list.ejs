@@ -17,8 +17,7 @@
 
     <% cars.forEach(function(car){ %> 
     <tr>
-        <td> <a href="/quote/detail?id=<%= quote._id %>">  <%= quote.quoteId %>  </a></td>
-        <td> <%= car.plateId %> </td>
+        <td> <a href="/car/detail?id=<%= car._id %>">  <%= car.plateId %>  </a></td>
         <td> <%= car.model %> </td>
         <td> <%= car.make %> </td>
         <td> <%= car.manufactureYear %> </td>

@@ -9,12 +9,12 @@
 
     <div class="form-group">
         <label>Model</label>
-        <input type="number" name="model" class="form-control">
+        <input type="text" name="model" class="form-control">
     </div>
 
     <div class="form-group">
         <label>Make</label>
-        <input type="date" name="make" class="form-control">
+        <input type="text" name="make" class="form-control">
     </div>
 
     <div class="form-group">
@@ -43,7 +43,7 @@
         <select name="user[]" multiple="multiple" class="form-control">
             <% users.forEach (function (user) { %>
 
-                <option value="<%= user._id %>"> <%= user.name %> </option>
+                <option value="<%= user._id %>"> <%= user.emailAddress %> </option>
 
             <% }) %>
         </select>

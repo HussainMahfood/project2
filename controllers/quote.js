@@ -4,13 +4,16 @@ const Car = require("../models/Car");
 const User = require("../models/User");
 
 
+// Require Moment
+const moment = require('moment');
+
 
 // add - GET
 exports.quote_add_get = (req, res) =>{
     Car.find()
-    User.find()
-    .then ( (cars , users) => {
-        res.render ('quote/add' , {cars , users} )
+    .then ( (cars ) => {
+        // res.send(cars)
+        res.render ('quote/add' , {cars} )
     })
     .catch((err) => {
         console.log(err);
@@ -20,6 +23,7 @@ exports.quote_add_get = (req, res) =>{
 // add - POST
 exports.quote_add_post = (req, res) => {
     let quote = new Quote (req.body)
+    quote.userRef = req.user
     quote.save()
     .then(()=>{
         // Reference Schema
@@ -77,7 +81,7 @@ exports.quote_view_get = (req, res) => {
 exports.quote_edit_get = (req, res) => {
     Quote.findById(req.query.id)
     .then(quote => {
-        res.render("quote/edit", {quote});
+        res.render("quote/edit", {quote, moment});
     })
     .catch(err => {
         console.log(err);
