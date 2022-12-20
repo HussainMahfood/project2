@@ -13,46 +13,46 @@ const app = express();
 app.use(express.static("public"));
 
 // Require Express-EJS-Layouts
-// const expressLayouts = require("express-ejs-layouts");
+const expressLayouts = require("express-ejs-layouts");
 
 // Look in to views folder for a file named layout.ejs
-// app.use(expressLayouts);
+app.use(expressLayouts);
 
 // Express Session and Passport
-//let session = require('express-session');
-//let passport = require('./helper/ppConfig');
+let session = require('express-session');
+let passport = require('./helper/ppConfig');
 
 // Session
-// app.use(session({
-//     secret: process.env.SECRET,
-//     saveUninitialized: true,
-//     resave: false,
-//     cookie: {maxAge: 360000} // 1 hour
-// }));
+app.use(session({
+    secret: process.env.SECRET,
+    saveUninitialized: true,
+    resave: false,
+    cookie: {maxAge: 360000} // 1 hour
+}));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Sharing the information with all web pages.
-// app.use(function(req, res, next){
-//     res.locals.currentUser = req.user;
-//     next();
-// })
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+})
 
 // Import Routes
-// const indexRoute = require('./routes/index'); //Frontend
+const indexRoute = require('./routes/index'); //Frontend
 const userRoute = require('./routes/user');
 const carRoute = require('./routes/car');
 const quoteRoute = require('./routes/quote');
 
 // Mount Routes
-// app.use('/', indexRoute);
+app.use('/', indexRoute);
 app.use('/', userRoute);
 app.use('/', carRoute);
 app.use('/', quoteRoute);
 
 // Node.js to look in a folder views for all the ejs files.
-// app.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 mongoose.set('strictQuery', false);
 // MongoDB Connection Configuration
