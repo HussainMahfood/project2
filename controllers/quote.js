@@ -10,9 +10,9 @@ const moment = require('moment');
 
 // add - GET
 exports.quote_add_get = (req, res) =>{
-    Car.find()
+    Car.find({userRef : req.user._id })
+    //Car.find()
     .then ( (cars ) => {
-        // res.send(cars)
         res.render ('quote/add' , {cars} )
     })
     .catch((err) => {
@@ -23,24 +23,39 @@ exports.quote_add_get = (req, res) =>{
 // add - POST
 exports.quote_add_post = (req, res) => {
     let quote = new Quote (req.body)
-    quote.userRef = req.user
+
+    quote.userRef = req.user._id
+    let carSelected = req.body.car[0] 
+    quote.carRef = carSelected
+
+
+    // quote.carRef = car._id
+    // console.log (car._id)
+    console.log ("-------")
+    console.log (carSelected)
+
+
+
+
+
+    // quote.userRef = req.user
     quote.save()
     .then(()=>{
         // Reference Schema
         // car
-        req.body.car.forEach ( car => {
-            Car.findById (car , (err , car) => {
-                car.quote.push (quote);
-                car.save();
-            });
-        })
+        // req.body.car.forEach ( car => {
+        //     Car.findById (car , (err , car) => {
+        //         car.quote.push (quote);
+        //         car.save();
+        //     });
+        // })
         // user
-        req.body.user.forEach ( user => {
-            User.findById (user , (err , user) => {
-                user.quote.push (quote);
-                user.save();
-            });
-        })        
+        // req.body.user.forEach ( user => {
+        //     User.findById (user , (err , user) => {
+        //         user.quote.push (quote);
+        //         user.save();
+        //     });
+        // })        
         res.redirect ('/quote/list');
         })
     .catch((err) => {
@@ -51,7 +66,7 @@ exports.quote_add_post = (req, res) => {
 
 // list
 exports.quote_list_get = (req, res) => {
-    Quote.find()
+    Quote.find(({userRef : req.user._id }))
     .populate("carRef")
     .populate("userRef")
     .then(quotes => {
@@ -69,7 +84,7 @@ exports.quote_view_get = (req, res) => {
     .populate("carRef")
     .populate("userRef")
     .then(quote => {
-        res.render("quote/view", {quote, moment})
+        res.render("quote/view", {quote , moment})
     })
     .catch(err => {
         console.log(err);
@@ -80,6 +95,8 @@ exports.quote_view_get = (req, res) => {
 // update - GET
 exports.quote_edit_get = (req, res) => {
     Quote.findById(req.query.id)
+    .populate('carRef')
+    .populate('userRef')
     .then(quote => {
         res.render("quote/edit", {quote, moment});
     })

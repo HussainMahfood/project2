@@ -1,31 +1,21 @@
-<h1> Cars </h1>
+<h2> Cars </h2>
+<a type="button" href="/car/add"  class="btn btn-sm btn-outline-secondary">Add</a>
 
 <table class="table table-striped">
     <tr>
         <th> Plate ID </th>
         <th> Model </th>
         <th> Make </th>
-        <th> Manufacture Year </th>
-        <th> Insurance Date </th>
-        <th> Value </th>
-        <th> Is New Car? </th>
-        <th> Created At </th>
-        <th> Updated At </th>
+
         <th> Edit </th>
         <th> Delete </th>
     </tr>
 
     <% cars.forEach(function(car){ %> 
     <tr>
-        <td> <a href="/car/detail?id=<%= car._id %>">  <%= car.plateId %>  </a></td>
+        <td> <a href="/car/view?id=<%= car._id %>">  <%= car.plateId %>  </a></td>
         <td> <%= car.model %> </td>
         <td> <%= car.make %> </td>
-        <td> <%= car.manufactureYear %> </td>
-        <td> <%= car.insuranceDate %> </td>
-        <td> <%= car.value %> </td>
-        <td> <%= car.isNewCar %> </td>
-        <td> <%= moment(car.createdAt).fromNow() %> </td>
-        <td> <%= moment(car.updatedAt).fromNow() %> </td>
 
         <td> <a href="/car/edit?id=<%= car._id %>"> Edit </a> </td>
         <td> <a href="/car/delete?id=<%= car._id %>"> Delete </a> </td>

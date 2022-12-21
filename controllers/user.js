@@ -37,10 +37,10 @@ exports.user_signup_post = (req, res) => {
         }
 
         // Checking if the email already exits or not in the MongoDB database
-        const emailExists = User.findOne({emailAddress: emailAddress});
-        if(emailExists) {
-            res.json({ msg: "Email already taken. Please try a new email"});
-        }
+        // const emailExists = User.findOne({emailAddress: emailAddress});
+        // if(emailExists) {
+        //     res.json({ msg: "Email already taken. Please try a new email"});
+        // }
 
 
         // Creating a new user from the User Model
@@ -142,7 +142,10 @@ exports.user_viewProfile_get = (req, res) => {
 // GET API for displaying the edit profile page
 exports.user_editProfile_get = (req, res) => {
     try {
-        User.findById(req.user).then(user => {
+        // req.password = "testtest";
+        User.findById(req.user)
+        .then(user => {
+           user.password = "";
             res.render("user/editProfile", {user, moment});
         })
         .catch(err => {
@@ -157,12 +160,12 @@ exports.user_editProfile_get = (req, res) => {
 // POST API for updating the user profile after editing 
 exports.user_updateProfile_post = (req, res) => {
     try {
-        console.log(req.user);
-        console.log("test");
-        console.log(req.body);
+        // console.log(req.user);
+        // console.log("test");
+        // console.log(req.body);
         User.findByIdAndUpdate(req.user, req.body).then(() => {
             // res.send ('user updated');
-            res.redirect("/");
+            res.redirect("/user/viewProfile");
         })
         .catch(err => {
             console.log(err)
@@ -176,7 +179,7 @@ exports.user_updateProfile_post = (req, res) => {
 // DELETE API for deleting user's profile
 exports.user_deleteProfile_get = (req, res) => {
     try {
-        console.log(req.query.id);
+        // console.log(req.query.id);
         User.findByIdAndDelete(req.query.id).then(() => {
             res.redirect("/user/register");
         })

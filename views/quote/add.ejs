@@ -25,7 +25,9 @@
 
     <div class="form-group">
         <label>Car</label>
-        <select name="car[]" multiple="multiple" class="form-control">
+        <select name="car[]" class="form-control">
+            <option selected> Select </option>
+
             <% cars.forEach (function (car) { %>
 
                 <option value="<%= car._id %>"> <%= car.plateId %> </option>
