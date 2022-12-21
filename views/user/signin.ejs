@@ -1,0 +1,30 @@
+<head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+ <body class="text-center">
+  <div class="modal-body p-5 pt-0">
+  <form method="POST" action="/user/signin">
+    <img class="mb-4" src="../../assets/img/icon/favicon.ico" alt="" width="72" height="57">
+    <h4 class="h3 mb-3 fw-normal">Welcome to Tameen</h4>
+    <h4 class="h3 mb-3 fw-normal">Please sign in</h4>
+
+    <div class="form-floating mb-3 w-100">
+      <input type="email" name="emailAddress" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3 w-100">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; Tameen 2017-2022</p>
+    <small class="text-muted">If you do not have account.<a href="/user/register">Sign up</a></small>
+  </form>
+</div>
+  </body>

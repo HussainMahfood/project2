@@ -1,0 +1,26 @@
+<h4> Cars </h4>
+<a type="button" href="/car/add"  class="btn btn-sm btn-outline-secondary">Add</a>
+</br>
+</br>
+
+<table class="table table-striped">
+    <tr>
+        <th> Plate ID </th>
+        <th> Model </th>
+        <th> Make </th>
+
+        <th> Edit </th>
+        <th> Delete </th>
+    </tr>
+
+    <% cars.forEach(function(car){ %> 
+    <tr>
+        <td> <a href="/car/view?id=<%= car._id %>">  <%= car.plateId %>  </a></td>
+        <td> <%= car.model %> </td>
+        <td> <%= car.make %> </td>
+
+        <td> <a href="/car/edit?id=<%= car._id %>"> Edit </a> </td>
+        <td> <a href="/car/delete?id=<%= car._id %>"> Delete </a> </td>
+    </tr>
+<% }) %>
+</table>

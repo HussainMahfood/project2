@@ -1,0 +1,24 @@
+<h4> Quotes </h4>
+<a type="button" href="/quote/add"  class="btn btn-sm btn-outline-secondary">Add</a>
+</br>
+</br>
+
+<table class="table table-striped">
+    <tr>
+        <th> Quote ID </th>
+        <th> Insurance Type </th>
+
+        <th> Edit </th>
+        <th> Delete </th>
+    </tr>
+
+    <% quotes.forEach(function(quote){ %> 
+    <tr>
+        <td> <a href="/quote/view?id=<%= quote._id %>">  <%= quote.quoteId %>  </a></td>
+        <td> <%= quote.insuranceType %> </td>
+
+        <td> <a href="/quote/edit?id=<%= quote._id %>"> Edit </a> </td>
+        <td> <a href="/quote/delete?id=<%= quote._id %>"> Delete </a> </td>
+    </tr>
+<% }) %>
+</table>

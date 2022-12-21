@@ -1,0 +1,46 @@
+<h4> Car Information </h4>
+
+<div>
+    Plate ID: <%= car.plateId %>
+</div>
+<br>
+
+<div>
+    Model: <%= car.model %>
+</div>
+<br>
+
+<div>
+    Make: <%= car.make %>
+</div>
+<br>
+
+<div>
+    Manufacture Year: <%= car.manufactureYear %>
+</div>
+<br>
+
+<div>
+    Insuarnce Date: <%= moment(car.insuranceDate).format('DD-MM-YYYY') %>
+</div>
+<br>
+
+<div>
+    Value: <%= car.value %>
+</div>
+<br>
+
+<div>
+    Is New Car? <%= car.isNewCar %>
+</div>
+<br>
+
+<div>
+    Created At: <%= moment(car.createdAt).fromNow() %>
+</div>
+<br>
+
+<div>
+    Updated At: <%= moment(car.updatedAt).fromNow() %>
+</div>
+

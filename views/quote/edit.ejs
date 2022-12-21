@@ -1,0 +1,46 @@
+<h4> Edit Quote </h4>
+
+<form method="POST" action="/quote/update">
+    
+    <div class="form-group">
+        <label>Quote ID</label>
+        <input type="text" name="quoteId" value="<%= quote.quoteId %>"  class="form-control">
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Quote Value</label>
+        <input type="number" name="quoteValue" value="<%= quote.quoteValue %>"  class="form-control">
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Quote Date</label>
+        <input type="date" name="quoteDate" value="<%= moment(quote.quoteDate).format('YYYY-MM-DD')%>"  class="form-control">
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label>Insurance Type</label>
+        <input type="text" name="insuranceType" value="<%= quote.insuranceType %>"  class="form-control">
+    </div>
+    <br>
+
+    
+    <div class="form-group">
+        <label>Car</label>
+        <div class="form-control" style="background-color:lightgray" disabled>
+            Plate ID: <%= quote.carRef.plateId %> <br>
+            Model: <%= quote.carRef.model %> <br>
+            Make: <%= quote.carRef.make %> <br>
+        </div>
+
+    </div>
+    <br>
+
+
+    <input type="hidden" name="id" value="<%= quote._id %>"  class="form-control">
+    <br>
+    <button type="submit" class="btn btn-primary">Update Quote</button>
+
+</form>

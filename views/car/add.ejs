@@ -1,0 +1,48 @@
+<h4> Add Car </h4>
+
+<form method="POST" action="/car/add">
+
+    <div class="form-group">
+        <label>Plate ID</label>
+        <input type="text" name="plateId" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Model</label>
+        <input type="text" name="model" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Make</label>
+        <input type="text" name="make" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Manufacture Year</label>
+        <input type="number" name="manufactureYear" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Insurance Date</label>
+        <input type="date" name="insuranceDate" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Value</label>
+        <input type="number" name="value" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Is New Car?</label>
+        <select type="text" name="isNewCar" class="form-select">
+            <option selected> Select </option>
+            <option value="true"> Yes </option>
+            <option value="false"> No </option>
+        </select>
+    </div>
+
+    <br>
+    
+    <button type="submit" class="btn btn-primary">Create Car</button>
+
+</form>

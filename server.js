@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // Require and initialze dotenv
 require('dotenv').config();
 
+
 // Initailze Express
 const app = express();
 
@@ -12,10 +13,10 @@ const app = express();
 app.use(express.static("public"));
 
 // Require Express-EJS-Layouts
-// const expressLayouts = require("express-ejs-layouts");
+const expressLayouts = require("express-ejs-layouts");
 
 // Look in to views folder for a file named layout.ejs
-// app.use(expressLayouts);
+app.use(expressLayouts);
 
 // Express Session and Passport
 let session = require('express-session');
@@ -26,7 +27,7 @@ app.use(session({
     secret: process.env.SECRET,
     saveUninitialized: true,
     resave: false,
-    cookie: {maxAge: 3600000}
+    cookie: {maxAge: 36000000000} // 10 hour
 }));
 
 app.use(passport.initialize());
@@ -39,26 +40,26 @@ app.use(function(req, res, next){
 })
 
 // Import Routes
-// const indexRoute = require('./routes/index'); //Frontend
-// const userRoute = require('./routes/user');
-// const carRoute = require('./routes/car');
-// const quoteRoute = require('./routes/quote');
+const indexRoute = require('./routes/index'); //Frontend
+const userRoute = require('./routes/user');
+const carRoute = require('./routes/car');
+const quoteRoute = require('./routes/quote');
 
 // Mount Routes
-// app.use('/', indexRoute);
-// app.use('/', userRoute);
-// app.use('/', carRoute);
-// app.use('/', quoteRoute);
+app.use('/', indexRoute);
+app.use('/', userRoute);
+app.use('/', carRoute);
+app.use('/', quoteRoute);
 
 // Node.js to look in a folder views for all the ejs files.
-// app.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 mongoose.set('strictQuery', false);
-// MongoDB Connection
+// MongoDB Connection Configuration
 mongoose.connect(process.env.mongoDBURL, 
     {useNewUrlParser: true, useUnifiedTopology: true},
     () => {
-        console.log("MongoDB Connected Successfully")
+        console.log("MongoDB Configured Successfully")
     }
 )
 
