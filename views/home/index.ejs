@@ -62,27 +62,25 @@
     
   </head>
   <body>
-
-  <main>
-
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h4 class="fw-light">Welcome to Tameen App</h4>
-        <a href="/user/logout" class="btn btn-outline-danger my-2">Sign Out</a>
-        <!-- <p class="lead text-muted"></p> -->
+        <% if(currentUser) { %>
+          <h4 class="fw-light">Welcome <%= currentUser.firstName %> <%= currentUser.lastName %></h4>
+          <a href="/user/logout" class="btn btn-outline-primary my-2">Sign Out</a>
+        <% } else { %>
+          <a href="/user/signin" class="btn btn-outline-primary my-2">Sign In</a>
+        <% } %>
       </div>
     </div>
   </section>
-
+<section>
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
             <img class="bd-placeholder-img card-img-top" src="../../assets/img/profile.png" alt="" width="100%" height="225">
-
             <div class="card-body">
               <p class="card-text">Update your Profile.</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -109,7 +107,6 @@
         <div class="col">
           <div class="card shadow-sm">
             <img class="bd-placeholder-img card-img-top" src="../../assets/img/insurance.png" alt="" width="100%" height="225">
-
             <div class="card-body">
               <p class="card-text">Add, Update, Delete and List your Quotations.</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -123,8 +120,5 @@
       </div>
     </div>
   </div>
-
-</main>
-
-  </body>
-</html>
+</section>
+</body>
