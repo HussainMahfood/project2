@@ -1,41 +1,48 @@
-<h1> Edit Car </h1>
+<h4> Edit Car </h4>
 
-<form method="POST" action="/car/update?_method=PUT">
+<form method="POST" action="/car/update">
     
     <div class="form-group">
         <label>Plate ID</label>
         <input type="text" name="plateId" value="<%= car.plateId %>"  class="form-control">
     </div>
+    <br>
 
     <div class="form-group">
         <label>Model</label>
         <input type="text" name="model" value="<%= car.model %>"  class="form-control">
     </div>
+    <br>
 
     <div class="form-group">
         <label>Make</label>
         <input type="text" name="make" value="<%= car.make %>"  class="form-control">
     </div>
+    <br>
 
     <div class="form-group">
         <label>Manufacture Year</label>
         <input type="number" name="manufactureYear" value="<%= car.manufactureYear %>"  class="form-control">
     </div>
+    <br>
 
     <div class="form-group">
         <label>Insuarnce Date</label>
         <input type="date" name="insuranceDate" value="<%= moment(car.insuranceDate).format('YYYY-MM-DD')%>"  class="form-control">
     </div>
+    <br>
 
     <div class="form-group">
         <label>Value</label>
         <input type="number" name="value" value="<%= car.value %>"  class="form-control">
     </div>
+    <br>
 
     <div class="form-group">
         <label>Is New Car?</label>
         <input type="text" name="isNewCar" value="<%= car.isNewCar %>"  class="form-control">
     </div>
+    <br>
 
     <input type="hidden" name="id" value="<%= car._id %>"  class="form-control">
 

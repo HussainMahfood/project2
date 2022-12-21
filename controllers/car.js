@@ -9,35 +9,15 @@ const moment = require('moment');
 
 // add - GET
 exports.car_add_get = (req, res) =>{
-    // User.find()
-    // .then ( () => {
         res.render ('car/add')
-    // })
-    // .catch((err) => {
-    //     console.log(err);
-    // });
 }
 
 // add - POST
 exports.car_add_post = (req, res) => {
     let car = new Car (req.body)
-    console.log (req.user._id)
-
     car.userRef = req.user._id
-    // car.userRef = User._id
-    console.log("---------------------------")
-//    console.log (Car.userRef)
-console.log (car.userRef)
     car.save()
-    .then(()=>{
-        // Reference Schema
-        // user
-        // req.body.user.forEach ( user => {
-        //     User.findById (user , (err , user) => {
-        //         user.car.push (car);
-        //         user.save();
-        //     });
-        // })        
+    .then(()=>{    
         res.redirect ('/car/list');
         })
     .catch((err) => {
