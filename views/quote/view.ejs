@@ -21,29 +21,10 @@
 </div>
 
 
-<% quote.car.forEach(function(car){ %>
     <hr>
   
     <div class="car"> 
-        <div>Car Plate ID: <%= car.plateId %></div>
-        <div>Model: <%= car.model %></div>
-        <div>Make: <%= car.make %></div>
-        <div>Manufacture Year: <%= car.manufactureYear %></div>
-        <div>Insurance Date: <%= car.insuranceDate %></div>
-        <div>Value: <%= car.value %></div>
-        <div>Is New Car?: <%= car.isNewCar %></div>
-        <div>Car Created on: <%= moment(car.createdAt).fromNow() %></div>
+        <div>Car Plate ID: <%= quote.carRef.plateId %></div>
+        <div>Model: <%= quote.carRef.model %></div>
+        <div>Make: <%= quote.carRef.make %></div>
     </div>
-<% }) %>
-
-<% quote.user.forEach(function(user){ %>
-    <hr>
-  
-    <div class="user"> 
-        <div>First Name: <%= user.firstName %></div>
-        <div>Last Name: <%= user.lastName %></div>
-        <div>Email Address: <%= user.emailAddress %></div>
-        <div>Phone Number: <%= user.phoneNumber %></div>
-        <div>User Created on: <%= moment(user.createdAt).fromNow() %></div>
-    </div>
-<% }) %>

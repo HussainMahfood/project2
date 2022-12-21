@@ -13,7 +13,7 @@
 </div>
 
 <div>
-    Insuarnce Date: <%= car.insuranceDate %>
+    Insuarnce Date: <%= moment(car.insuranceDate).format('DD-MM-YYYY') %>
 </div>
 
 <div>
@@ -32,15 +32,3 @@
     Updated At: <%= moment(car.updatedAt).fromNow() %>
 </div>
 
-
-<% car.user.forEach(function(user){ %>
-    <hr>
-  
-    <div class="user"> 
-        <div>First Name: <%= user.firstName %></div>
-        <div>Last Name: <%= user.lastName %></div>
-        <div>Email Address: <%= user.emailAddress %></div>
-        <div>Phone Number: <%= user.phoneNumber %></div>
-        <div>User Created on: <%= moment(user.createdAt).fromNow() %></div>
-    </div>
-<% }) %>

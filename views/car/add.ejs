@@ -34,18 +34,10 @@
 
     <div class="form-group">
         <label>Is New Car?</label>
-        <input type="text" name="isNewCar" class="form-control">
-    </div>
-
-
-    <div class="form-group">
-        <label>User</label>
-        <select name="user[]" multiple="multiple" class="form-control">
-            <% users.forEach (function (user) { %>
-
-                <option value="<%= user._id %>"> <%= user.emailAddress %> </option>
-
-            <% }) %>
+        <select type="text" name="isNewCar" class="form-select">
+            <option selected> Select </option>
+            <option value="true"> Yes </option>
+            <option value="false"> No </option>
         </select>
     </div>
 

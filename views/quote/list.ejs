@@ -1,4 +1,6 @@
 <h1> Quotes </h1>
+<a type="button" href="/quote/add"  class="btn btn-sm btn-outline-secondary">Add</a>
+
 
 <table class="table table-striped">
     <tr>
@@ -14,7 +16,7 @@
 
     <% quotes.forEach(function(quote){ %> 
     <tr>
-        <td> <a href="/quote/detail?id=<%= quote._id %>">  <%= quote.quoteId %>  </a></td>
+        <td> <a href="/quote/view?id=<%= quote._id %>">  <%= quote.quoteId %>  </a></td>
         <td> <%= quote.quoteValue %> </td>
         <td> <%= quote.quoteDate %> </td>
         <td> <%= quote.insuranceType %> </td>

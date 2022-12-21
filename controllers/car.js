@@ -9,28 +9,35 @@ const moment = require('moment');
 
 // add - GET
 exports.car_add_get = (req, res) =>{
-    User.find()
-    .then ( (users) => {
-        res.render ('car/add' , {users} )
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+    // User.find()
+    // .then ( () => {
+        res.render ('car/add')
+    // })
+    // .catch((err) => {
+    //     console.log(err);
+    // });
 }
 
 // add - POST
 exports.car_add_post = (req, res) => {
     let car = new Car (req.body)
+    console.log (req.user._id)
+
+    car.userRef = req.user._id
+    // car.userRef = User._id
+    console.log("---------------------------")
+//    console.log (Car.userRef)
+console.log (car.userRef)
     car.save()
     .then(()=>{
         // Reference Schema
         // user
-        req.body.user.forEach ( user => {
-            User.findById (user , (err , user) => {
-                user.car.push (car);
-                user.save();
-            });
-        })        
+        // req.body.user.forEach ( user => {
+        //     User.findById (user , (err , user) => {
+        //         user.car.push (car);
+        //         user.save();
+        //     });
+        // })        
         res.redirect ('/car/list');
         })
     .catch((err) => {
@@ -41,7 +48,7 @@ exports.car_add_post = (req, res) => {
 
 // list
 exports.car_list_get = (req, res) => {
-    Car.find()
+    Car.find({userRef : req.user._id })
     .populate("userRef")
     .then(cars => {
         res.render("car/list", {cars, moment})
@@ -69,7 +76,7 @@ exports.car_view_get = (req, res) => {
 exports.car_edit_get = (req, res) => {
     Car.findById(req.query.id)
     .then(car => {
-        res.render("car/edit", {car});
+        res.render("car/edit", {car , moment});
     })
     .catch(err => {
         console.log(err);

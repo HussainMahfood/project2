@@ -14,7 +14,7 @@
 
     <div class="form-group">
         <label>Quote Date</label>
-        <input type="date" name="quoteDate" value="<%= moment(quote.quoteDate).format('yyyy-MM-DD')%>"  class="form-control">
+        <input type="date" name="quoteDate" value="<%= moment(quote.quoteDate).format('YYYY-MM-DD')%>"  class="form-control">
     </div>
 
     <div class="form-group">
@@ -25,13 +25,14 @@
     
     <div class="form-group">
         <label>Car</label>
-        <input type="text" name="car" value="<%= quote.car %>"  class="form-control">
+        <div class="form-control" disabled>
+            Plate ID: <%= quote.carRef.plateId %> <br>
+            Model: <%= quote.carRef.model %> <br>
+            Make: <%= quote.carRef.make %> <br>
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label>User</label>
-        <input type="text" name="user" value="<%= quote.user %>"  class="form-control">
-    </div>
 
     <input type="hidden" name="id" value="<%= quote._id %>"  class="form-control">
     <br>
