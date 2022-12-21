@@ -17,22 +17,21 @@ const carCtrl = require("../controllers/car");
 // Routes
 
 // add
-// router.get("/car/add", isLoggedIn, quoteCtrl.car_add_get);
-router.get("/car/add", carCtrl.car_add_get);
-router.post("/car/add", carCtrl.car_add_post);
+router.get("/car/add", isLoggedIn, carCtrl.car_add_get);
+router.post("/car/add", isLoggedIn, carCtrl.car_add_post);
 
 // list
-router.get("/car/list", carCtrl.car_list_get);
+router.get("/car/list", isLoggedIn, carCtrl.car_list_get);
 
 // view
-router.get("/car/view", carCtrl.car_view_get);
+router.get("/car/view", isLoggedIn, carCtrl.car_view_get);
 
 // update
-router.get("/car/edit", carCtrl.car_edit_get);
-router.post("/car/update", carCtrl.car_update_post);
+router.get("/car/edit", isLoggedIn, carCtrl.car_edit_get);
+router.post("/car/update", isLoggedIn, carCtrl.car_update_post);
 
 // delete
-router.get("/car/delete", carCtrl.car_delete_get);
+router.get("/car/delete", isLoggedIn, carCtrl.car_delete_get);
 
 
 module.exports = router;

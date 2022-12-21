@@ -1,15 +1,13 @@
-<h1> Quotes </h1>
+<h4> Quotes </h4>
 <a type="button" href="/quote/add"  class="btn btn-sm btn-outline-secondary">Add</a>
-
+</br>
+</br>
 
 <table class="table table-striped">
     <tr>
         <th> Quote ID </th>
-        <th> Quote Value </th>
-        <th> Quote Date </th>
         <th> Insurance Type </th>
-        <th> Created At </th>
-        <th> Updated At </th>
+
         <th> Edit </th>
         <th> Delete </th>
     </tr>
@@ -17,11 +15,7 @@
     <% quotes.forEach(function(quote){ %> 
     <tr>
         <td> <a href="/quote/view?id=<%= quote._id %>">  <%= quote.quoteId %>  </a></td>
-        <td> <%= quote.quoteValue %> </td>
-        <td> <%= quote.quoteDate %> </td>
         <td> <%= quote.insuranceType %> </td>
-        <td> <%= moment(quote.createdAt).fromNow() %> </td>
-        <td> <%= moment(quote.updatedAt).fromNow() %> </td>
 
         <td> <a href="/quote/edit?id=<%= quote._id %>"> Edit </a> </td>
         <td> <a href="/quote/delete?id=<%= quote._id %>"> Delete </a> </td>

@@ -11,7 +11,6 @@ const moment = require('moment');
 // add - GET
 exports.quote_add_get = (req, res) =>{
     Car.find({userRef : req.user._id })
-    //Car.find()
     .then ( (cars ) => {
         res.render ('quote/add' , {cars} )
     })
@@ -27,35 +26,8 @@ exports.quote_add_post = (req, res) => {
     quote.userRef = req.user._id
     let carSelected = req.body.car[0] 
     quote.carRef = carSelected
-
-
-    // quote.carRef = car._id
-    // console.log (car._id)
-    console.log ("-------")
-    console.log (carSelected)
-
-
-
-
-
-    // quote.userRef = req.user
     quote.save()
-    .then(()=>{
-        // Reference Schema
-        // car
-        // req.body.car.forEach ( car => {
-        //     Car.findById (car , (err , car) => {
-        //         car.quote.push (quote);
-        //         car.save();
-        //     });
-        // })
-        // user
-        // req.body.user.forEach ( user => {
-        //     User.findById (user , (err , user) => {
-        //         user.quote.push (quote);
-        //         user.save();
-        //     });
-        // })        
+    .then(()=>{  
         res.redirect ('/quote/list');
         })
     .catch((err) => {

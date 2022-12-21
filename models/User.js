@@ -36,11 +36,6 @@ const userSchema = mongoose.Schema ({
         minlength: [8 , "Please enter a phone number with atleast 8 digits"],
         maxlength: [15 , "Please enter a phone number with atmost 15 digits"]
     },
-    photo: {
-        // type: Image,
-        type: String,
-        // required: true
-    },
     password: {
         type: String,
         required: true,
@@ -52,8 +47,6 @@ const userSchema = mongoose.Schema ({
 
 // verifyPassword
 userSchema.methods.verifyPassword = function (password) {
-    console.log (password);
-    console.log (this.password);
     return bcrypt.compareSync(password , this.password);
 }
 

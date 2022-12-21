@@ -7,6 +7,10 @@ const router = express.Router();
 // Require for post requests
 router.use(express.urlencoded({ extended: true }));
 
+// Require isLoggedIn
+const isLoggedIn = require ('../helper/isLoggedIn');
+
+
 // Controllers
 const userCtrl = require ('../controllers/user');
 
@@ -23,15 +27,12 @@ router.post('/user/signin', userCtrl.user_signin_post);
 router.get('/user/logout', userCtrl.user_logout_get);
 
 // View User Profile route
-router.get('/user/viewProfile', userCtrl.user_viewProfile_get);
+router.get('/user/viewProfile', isLoggedIn, userCtrl.user_viewProfile_get);
 
 
 // User profile edit and update routes
-router.get('/user/editProfile', userCtrl.user_editProfile_get);
-router.post('/user/updateProfile', userCtrl.user_updateProfile_post)
-
-// User profile delete route
-router.get('/user/deleteProfile', userCtrl.user_deleteProfile_get);
+router.get('/user/editProfile', isLoggedIn, userCtrl.user_editProfile_get);
+router.post('/user/updateProfile', isLoggedIn, userCtrl.user_updateProfile_post)
 
 
 // Exports
